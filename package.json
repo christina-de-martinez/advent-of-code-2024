@@ -1,0 +1,16 @@
+{
+    "name": "advent-of-code-2024",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "bun run ./day-1/index.js"
+    },
+    "keywords": [
+        "aoc",
+        "advent of code"
+    ],
+    "author": "",
+    "license": "ISC"
+}
