@@ -1,7 +1,8 @@
 const path = "./day-1/input.txt";
 const file = Bun.file(path);
 const text = await file.text().then((res) => {
-    getSolution(res);
+    getPart1(res);
+    getPart2(res);
 });
 
 // const input = `3   4
@@ -11,7 +12,7 @@ const text = await file.text().then((res) => {
 // 3   9
 // 3   3`;
 
-function getSolution(input) {
+function splitInputIntoColumns(input) {
     const lines = input.split("\n");
     const firstColumn = [];
     const secondColumn = [];
@@ -20,6 +21,11 @@ function getSolution(input) {
         firstColumn.push(parseInt(addToFirstColumn));
         secondColumn.push(parseInt(addToSecondColumn));
     });
+    return [firstColumn, secondColumn];
+}
+
+function getPart1(input) {
+    const [firstColumn, secondColumn] = splitInputIntoColumns(input);
     firstColumn.sort((a, b) => a - b);
     secondColumn.sort((a, b) => a - b);
     if (firstColumn.length !== secondColumn.length) {
@@ -32,4 +38,21 @@ function getSolution(input) {
     console.log("sumOfDifferences", sumOfDifferences);
 }
 
-// getSolution(input);
+function getPart2(input) {
+    const [firstColumn, secondColumn] = splitInputIntoColumns(input);
+    const secondColumnOccurrences = {};
+    for (let i = 0; i < secondColumn.length; i++) {
+        if (!secondColumnOccurrences[secondColumn[i]]) {
+            secondColumnOccurrences[secondColumn[i]] = 0;
+        }
+        secondColumnOccurrences[secondColumn[i]] =
+            secondColumnOccurrences[secondColumn[i]] + 1;
+    }
+    const similarityScore = firstColumn.reduce((acc, curr) => {
+        const multiplier = secondColumnOccurrences[curr] || 0;
+        return acc + curr * multiplier;
+    }, 0);
+    console.log("similarityScore", similarityScore);
+}
+
+// getPart2(input);
