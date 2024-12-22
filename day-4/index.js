@@ -26,11 +26,9 @@ function getPart1(input) {
 
     const matches = [];
     for (let y = 0; y < rows.length; y++) {
-        console.log("row", rows[y]);
         const row = rows[y];
         for (let x = 0; x < row.length; x++) {
             if (row[x] === "X") {
-                console.log("found an X", x, y);
                 searchSurroundingLetters(rows, x, y, 1, "all", matches);
             }
         }
@@ -46,7 +44,6 @@ function searchSurroundingLetters(
     direction = "all",
     matches
 ) {
-    console.log("searching surrounding...");
     const stringToFind = "XMAS";
     if (
         y > rows.length ||
@@ -86,7 +83,6 @@ function searchSurroundingLetters(
     if (north === stringToFind[nextLetterIndex]) {
         if (nextLetterIndex === stringToFind.length - 1) {
             matches.push([y - 1, x, "north"]);
-            console.log("new matches", matches);
             return;
         }
         nextLetter = searchSurroundingLetters(
@@ -102,7 +98,6 @@ function searchSurroundingLetters(
     if (east === stringToFind[nextLetterIndex]) {
         if (nextLetterIndex === stringToFind.length - 1) {
             matches.push([y, x + 1, "east"]);
-            console.log("new matches", matches);
             return;
         }
         nextLetter = searchSurroundingLetters(
@@ -118,7 +113,6 @@ function searchSurroundingLetters(
     if (west === stringToFind[nextLetterIndex]) {
         if (nextLetterIndex === stringToFind.length - 1) {
             matches.push([y, x - 1, "west"]);
-            console.log("new matches", matches);
             return;
         }
         nextLetter = searchSurroundingLetters(
@@ -134,7 +128,6 @@ function searchSurroundingLetters(
     if (south === stringToFind[nextLetterIndex]) {
         if (nextLetterIndex === stringToFind.length - 1) {
             matches.push([y + 1, x, "south"]);
-            console.log("new matches", matches);
             return;
         }
         nextLetter = searchSurroundingLetters(
@@ -150,7 +143,6 @@ function searchSurroundingLetters(
     if (northwest === stringToFind[nextLetterIndex]) {
         if (nextLetterIndex === stringToFind.length - 1) {
             matches.push([y - 1, x - 1, "northwest"]);
-            console.log("new matches", matches);
             return;
         }
         nextLetter = searchSurroundingLetters(
@@ -166,7 +158,6 @@ function searchSurroundingLetters(
     if (northeast === stringToFind[nextLetterIndex]) {
         if (nextLetterIndex === stringToFind.length - 1) {
             matches.push([y - 1, x + 1, "northeast"]);
-            console.log("new matches", matches);
             return;
         }
         nextLetter = searchSurroundingLetters(
@@ -182,7 +173,6 @@ function searchSurroundingLetters(
     if (southwest === stringToFind[nextLetterIndex]) {
         if (nextLetterIndex === stringToFind.length - 1) {
             matches.push([y + 1, x - 1, "southwest"]);
-            console.log("new matches", matches);
             return;
         }
         nextLetter = searchSurroundingLetters(
@@ -198,7 +188,6 @@ function searchSurroundingLetters(
     if (southeast === stringToFind[nextLetterIndex]) {
         if (nextLetterIndex === stringToFind.length - 1) {
             matches.push([y + 1, x + 1, "southeast"]);
-            console.log("new matches", matches);
             return;
         }
         nextLetter = searchSurroundingLetters(
@@ -210,8 +199,6 @@ function searchSurroundingLetters(
             matches
         );
     }
-
-    console.log("letter wasnt found");
 
     return nextLetter;
     // if we're searching east, we can stop looking for Xs by length - 1 - stringToFind.length (stop looking at .length - 5), etc.
