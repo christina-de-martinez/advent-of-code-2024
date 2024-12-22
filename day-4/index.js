@@ -2,7 +2,6 @@ const path = "./day-4/input.txt";
 const file = Bun.file(path);
 const text = await file.text().then((res) => {
     getPart1(res);
-    // getPart2(res);
 });
 
 const input = `MMMSXXMASM
@@ -17,11 +16,7 @@ MAMMMXMMMM
 MXMXAXMASX`;
 
 function getPart1(input) {
-    // check if the letter is an X
-    // if so, start searching for the rest of the word
-    // next neighbors can be above, below, diagonal, right, left
     const inputCopy = input;
-    // split into rows
     const rows = inputCopy.split("\n");
 
     const matches = [];
@@ -201,7 +196,4 @@ function searchSurroundingLetters(
     }
 
     return nextLetter;
-    // if we're searching east, we can stop looking for Xs by length - 1 - stringToFind.length (stop looking at .length - 5), etc.
 }
-
-// getPart1(input);
