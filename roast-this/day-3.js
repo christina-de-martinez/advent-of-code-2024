@@ -31,5 +31,6 @@ function getPart2(input) {
         }
         return prev;
     }, 0);
+    console.log("answer:", product);
     return product;
 }
