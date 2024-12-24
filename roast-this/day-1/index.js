@@ -28,7 +28,7 @@ function getPart1(input) {
         const difference = Math.abs(curr - secondColumn[index]);
         return acc + difference;
     }, 0);
-    console.log("sumOfDifferences", sumOfDifferences);
+    return sumOfDifferences;
 }
 
 function getPart2(input) {
@@ -45,5 +45,5 @@ function getPart2(input) {
         const multiplier = secondColumnOccurrences[curr] || 0;
         return acc + curr * multiplier;
     }, 0);
-    console.log("similarityScore", similarityScore);
+    return similarityScore;
 }
